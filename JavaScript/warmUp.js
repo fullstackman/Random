@@ -38,6 +38,7 @@ function bistro(){
 
 }
 
+
 // Throw in a global variable for fun
 var glub = "Pies overeasy";
 // Once declared in a document, we could refer to this variable from an
