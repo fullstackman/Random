@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Customize Your Page!</title>
+		<link href="style.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<h1>Choose your preferred background color:</h1>
+		<p>
+			<span onclick="document.body.style.backgroundColor = 'red';">Red</span> |
+			<span onclick="document.body.style.backgroundColor = 'white';">White</span> |
+			<span onclick="document.body.style.backgroundColor = 'green';">Green</span> |
+			<span onclick="document.body.style.backgroundColor = 'blue';">Blue</span>
+		</p>
+		<h3>Or provide your own!</h3>
+		<button type="button" id="custom">Custom Color</button>
+		<script type="text/javascript">
+			document.getElementById('custom').addEventListener("click", function(){
+				//the '||' operator assigns a default value to the variable if the user decides to cancel the prompt.
+				var color = window.prompt('Describe the color: ',
+					'LightSalmon') || null;
+				// ? is the standard ternary operator that implements "if/else" logic.
+				(color == null) ? window.alert('So you changed your mind?') : document.body.style.backgroundColor = color;
+				// If the input color is not recognized as a valid color name, then the value defaults to 'white.' Therefore, we know that the input color is not valid if the document assigned a color different from what was input.
+				if(color != document.body.style.backgroundColor)
+					window.alert("That color is not supported!");
+			});
+		</script>
+	</body>
+</html>
