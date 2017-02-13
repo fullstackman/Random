@@ -1,0 +1,2 @@
+# Hackerrank Coding Challenges
+Hackerrank is an online coding platform "where programmers from all over the world come together to solve problems in a wide range of Computer Science domains." It's been notable for being a resource that top tech companies use to test their prospective hires. As I complete some interesting challenges, I'll post my solutions here. 
