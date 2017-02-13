@@ -1,11 +1,11 @@
-import java.io.*;  // Imports all of the java I/O(input/output) objects and methods.
-	/*Specifically FileInputStream, FileOutputStream, FileReader, FileWriter, and IOException will be needed in this program.
-		The first two are for byte stream I/O while the next two are for character stream I/O. The last one is for handling IOExceptions.
-	*/
-import java.util.Scanner;  // Imports the java Scanner for reading user input from the command line.
-
-	/*This is a program that accepts a text file and operates on the file according to the user input
-	copies the text into an output file, "outputText.txt"*/
+/*
+	Imports all of the java I/O(input/output) objects and methods.
+	Specifically FileInputStream, FileOutputStream, FileReader, FileWriter, and IOException will be needed in this program.
+	The first two are for byte stream I/O while the next two are for character stream I/O. The last one is for handling IOExceptions.
+*/
+import java.io.*;
+// Imports the java Scanner for reading user input from the command line.
+import java.util.Scanner;
 
 public class CopyText{
 	public static void main(String[] args) throws IOException{
