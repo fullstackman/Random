@@ -1,0 +1,24 @@
+#Busiest Node Problem
+
+Background
+-----------
+I was asked this question during a coding assesment as part of a job interview. There was a specific requirement to avoid using a global variable outside of the Main method, so I fumbled for 30 minutes trying to figure out how to do recursion using this exact method signature for `BusiestNode()`. I thought about on my own a week later and built this project to test my solution.
+
+Problem Statement
+-----------------
+ * Large company doing yearly review
+ * Assesing the tenure of its various managers
+ * Given a tree structure of employee nodes, determine the manager with the highest average tenure of herself and all her employees.
+ * (Visual representation coming soon. . .)
+
+Setup
+-----
+Ensure you have Java 7 or higher installed and the [environment variables](https://docs.oracle.com/javase/tutorial/essential/environment/paths.html) properly set.
+
+How To Run
+----------
+In the project directory:
+
+`javac BusiestNode.java`
+
+`java BusiestNode`
