@@ -1,0 +1,6 @@
+This is a test case.
+We are testing to see if the program CopyText
+Can process the name of text file that
+Is separated by spaces like
+This file's name:
+try this file.txt
