@@ -56,10 +56,8 @@ public class BusiestNode{
   }
 
   private Node buildTree(String inputFile){
-    Node rootNode = null;
-
     //System.out.printf("You gave this file name: %s\n",inputFile);
-
+    Node rootNode = null;
     Scanner sc1 = null;
     
     try{
@@ -74,23 +72,22 @@ public class BusiestNode{
       int currentIndex = -1;
       
       while (currentNode != null){
-        for(int z = -2; z < currentIndex; ++z){
+        /*for(int z = -2; z < currentIndex; ++z){
           System.out.printf("\t");
         }
         System.out.printf("Current node: %d\twith %d children.\tCurrent Index: %d\n"
-          ,currentNode.value,currentNode.children.length,currentIndex);
+          ,currentNode.value,currentNode.children.length,currentIndex);*/
         if(currentNode.children.length < 1){
-          //--currentIndex;
-          //ancestors.get(currentIndex).currentChild += 1;
           currentNode = ancestors.get(currentIndex).itself;
           continue;
         }
         //If we don't have any ancestors yet or the current node is not the same as
         //the current ancestor, then we add this node to the list of ancestry.
-        if ( ancestors.size() < 1 || !ancestors.get(currentIndex).itself.equals(currentNode) ){
-          System.out.printf("Creating new ancestor: %d\twith %d children.\n",
+        if ( ancestors.size() < 1 ||
+          !ancestors.get(currentIndex).itself.equals(currentNode) ){
+          /*System.out.printf("Creating new ancestor: %d with %d children.\n",
             currentNode.value,
-            currentNode.children.length);
+            currentNode.children.length);*/
           Ancestor temp = new Ancestor(currentNode);
           ancestors.add(temp);
           sc1.next();
@@ -114,9 +111,13 @@ public class BusiestNode{
           int tempChildren = sc1.nextInt();
           currentNode.children[temp.currentChild] = new Node(tempValue, tempChildren);
           currentNode = currentNode.children[temp.currentChild];
-          //++currentIndex;
           continue;
         }
+        /*for(int z = -1; z < currentIndex; ++z){
+          System.out.printf("\t");
+        }
+        System.out.printf("Done processing node %d with %d children!\n",
+          currentNode.value,currentNode.children.length);*/
         //at this point, we've visited all of this ancestors children
         //time to return to its ancestor
         --currentIndex;
