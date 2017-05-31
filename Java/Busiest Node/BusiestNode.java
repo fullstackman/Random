@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class BusiestNode{
   
   public static void main(String[] args){
-    System.out.println("Not ready yet. . .");
     //read in a file and build the tree
     if(args.length < 1){
       System.out.println("ERROR: No input file given!");
@@ -14,8 +13,6 @@ public class BusiestNode{
     //instantiate this class before its methods can be used
     BusiestNode mainObj = new BusiestNode();
     Node root = mainObj.buildTree(args[0]);
-    /*System.out.printf("The root is a node with value %d and %d children.\n",
-      root.value,root.children.length);*/
     Node busiestNode = null;
     busiestNode = mainObj.findBusiestNode(root);
   }
@@ -37,12 +34,6 @@ public class BusiestNode{
         this.children[i] = null;
       }
     }
-
-    /* to be completed.
-    private addChild(){
-      ;
-    }
-    */
   }
 
   private class Ancestor {
@@ -156,11 +147,13 @@ public class BusiestNode{
     Node currentNode = president;
     int currentIndex = -1;
 
+    //there is a logical error hiding in here somewhere. . .
     while (currentNode != null){
       if(currentNode.children.length < 1){
         //add value to ancestors and increment their descendant counts.
         for(int k=0; k<ancestors.size();++k){
           ancestors.get(k).totalValue += currentNode.value;
+          ancestors.get(k).descendants += 1;
         }
         currentNode = ancestors.get(currentIndex).itself;
         continue;
@@ -185,12 +178,13 @@ public class BusiestNode{
         continue;
       }
       // add value to ancestors and increment their descendant counts.
-      temp.descendants += currentNode.children.length;
       for(int w=0; w<currentIndex; ++w){
-        ancestors.get(w).totalValue += temp.totalValue;
-        ancestors.get(w).descendants += temp.descendants;
+        ancestors.get(w).totalValue += currentNode.value;
+        ancestors.get(w).descendants += 1;
       }
       //compute average and see if this qualifies as busiest Node
+      System.out.printf("Checking if %d / %d is the busiest average. . .\n",
+        temp.totalValue,temp.descendants);
       double nodeAvg = (double) temp.totalValue / (double) temp.descendants;
       if(nodeAvg > busiestAvg){
         busiestAvg = nodeAvg;
