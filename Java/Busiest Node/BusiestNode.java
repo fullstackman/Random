@@ -14,6 +14,10 @@ public class BusiestNode{
     //instantiate this class before its methods can be used
     BusiestNode mainObj = new BusiestNode();
     Node root = mainObj.buildTree(args[0]);
+    /*System.out.printf("The root is a node with value %d and %d children.\n",
+      root.value,root.children.length);*/
+    Node busiestNode = null;
+    busiestNode = mainObj.findBusiestNode(root);
   }
 
   private class Node{
@@ -84,7 +88,8 @@ public class BusiestNode{
         //If we don't have any ancestors yet or the current node is not the same as
         //the current ancestor, then we add this node to the list of ancestry.
         if ( ancestors.size() < 1 ||
-          !ancestors.get(currentIndex).itself.equals(currentNode) ){
+          !ancestors.get(currentIndex).itself.equals(currentNode)
+          ){
           /*System.out.printf("Creating new ancestor: %d with %d children.\n",
             currentNode.value,
             currentNode.children.length);*/
@@ -146,6 +151,7 @@ public class BusiestNode{
 
   private Node findBusiestNode(Node president){
     Node busiestNode = null;
+    double busiestAvg = -1;
     ArrayList<Ancestor> ancestors = new ArrayList<Ancestor>();
     Node currentNode = president;
     int currentIndex = -1;
@@ -153,23 +159,44 @@ public class BusiestNode{
     while (currentNode != null){
       if(currentNode.children.length < 1){
         //add value to ancestors and increment their descendant counts.
+        for(int k=0; k<ancestors.size();++k){
+          ancestors.get(k).totalValue += currentNode.value;
+        }
         currentNode = ancestors.get(currentIndex).itself;
         continue;
       }
-      if (! ancestors.get(currentIndex).equals(currentNode) ){
+      if ( ancestors.size() < 1 ||
+          !ancestors.get(currentIndex).itself.equals(currentNode)
+      ){
         Ancestor temp = new Ancestor(currentNode);
         ancestors.add(temp);
-        ++currentIndex;
         currentNode = currentNode.children[0];
+        ++currentIndex;
         continue;
       }
-      if (ancestors.get (currentIndex).currentChild < currentNode.children.length){
-        currentNode = currentNode.children[ancestors.get(currentIndex).currentChild];
+
+      //save the pointer to the current ancestor node for easy reference
+      Ancestor temp = ancestors.get(currentIndex);
+      //mark that a child was just processed successfully!
+      temp.currentChild += 1;
+
+      if (temp.currentChild < currentNode.children.length){
+        currentNode = currentNode.children[temp.currentChild];
         continue;
       }
-        // add value to ancestors and increment their descendant counts.
-        //compute average and see if this qualifies as busiest Node
-        --currentIndex;
+      // add value to ancestors and increment their descendant counts.
+      temp.descendants += currentNode.children.length;
+      for(int w=0; w<currentIndex; ++w){
+        ancestors.get(w).totalValue += temp.totalValue;
+        ancestors.get(w).descendants += temp.descendants;
+      }
+      //compute average and see if this qualifies as busiest Node
+      double nodeAvg = (double) temp.totalValue / (double) temp.descendants;
+      if(nodeAvg > busiestAvg){
+        busiestAvg = nodeAvg;
+        busiestNode = currentNode;
+      }
+      --currentIndex;
       try {
         currentNode = ancestors.get(currentIndex).itself;
       }
@@ -180,7 +207,9 @@ public class BusiestNode{
         continue;
       }
     }
-
+    System.out.printf(
+      "The busiest node has the value of %d with %d children and an average of %f.\n",
+      busiestNode.value,busiestNode.children.length,busiestAvg);
     return busiestNode;
   }
 }
