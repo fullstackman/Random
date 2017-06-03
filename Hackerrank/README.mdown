@@ -1,2 +1,8 @@
-# Hackerrank Coding Challenges
-Hackerrank is an online coding platform "where programmers from all over the world come together to solve problems in a wide range of Computer Science domains." It's been notable for being a resource that top tech companies use to test their prospective hires. As I complete some interesting challenges, I'll post my solutions here. 
+Hackerrank Coding Challenges
+============================
+
+## Background
+[Hackerrank](https://www.hackerrank.com) is an online coding platform "where programmers from all over the world come together to solve problems in a wide range of Computer Science domains." It's been notable for being a resource that top tech companies use to test their prospective hires. As I complete some interesting challenges, I'll post my solutions here. My language of choice is Java, but there could be some exceptions.
+
+## Usage
+To really see these solutions in action, create your own free account at Hackerrank then find the challenge you're interested in. Just copy and paste my code into the prompt and watch it pass the testcases. Feel free to post an issue on this repository if the code fails.
