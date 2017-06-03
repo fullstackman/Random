@@ -1,0 +1,13 @@
+Analogies for Days!
+==============
+Take an input English sentence and tokenize it.
+Replace the tokens with new words from a dictionary of words that
+includes their parts of speech
+Example:
+	Given:	A monkey stole my banana!
+	Output:	A football contemplated my staircase!
+Consider using word similarity between various tokens to choose new
+words that produce a similar conceptual relationship as the original input.
+Example:
+	Given:	The sky is blue.
+	Output:	The grass is green

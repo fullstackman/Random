@@ -1,0 +1,13 @@
+Twist My Words
+============
+Take an input English sentence and tokenize it.
+Define a set of legal transformations rules.
+Transform (i.e. reorder) the tokens based on a random rule
+Replace the tokens with their original words/phrases.
+Example:
+	Given: 	Yesterday, we went to ShopRite to buy a turkey.
+	Output:	We went to ShopRite yesterday to buy a turkey.
+			OR
+		To buy a turkey, we went to ShopRite yesterday.
+			OR
+		Yesterday, to buy a turkey, we went to ShopRite.
