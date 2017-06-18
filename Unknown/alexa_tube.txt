@@ -1,7 +1,22 @@
 Stream YouTube audio through Alexa
 
+YouTube API:
 https://developers.google.com/youtube/v3/getting-started 
 
+Detailed explanation of the long-audio streaming functions:
 https://developer.amazon.com/blogs/post/Tx1DSINBM8LUNHY/New-Alexa-Skills-Kit-ASK-Feature-Audio-Streaming-in-Alexa-Skills
 
+Official Project:
+https://github.com/alexa/skill-sample-nodejs-audio-player 
+
+Sample audio stream using WebRTC
 https://servicelab.org/2013/07/24/streaming-audio-between-browsers-with-webrtc-and-webaudio/
+
+Python im[plementation that streams audio as a secure https:
+https://github.com/nicholas-gh/alexa-skill-kit-python-play-stream
+
+Could the final command to play be this simple?
+https://github.com/cpostier/Info-Wars-Stream-Alexa
+
+Interesting Implementation with audio dev tools:
+https://github.com/bespoken/streamer 
