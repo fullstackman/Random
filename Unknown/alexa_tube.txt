@@ -1,0 +1,7 @@
+Stream YouTube audio through Alexa
+
+https://developers.google.com/youtube/v3/getting-started 
+
+https://developer.amazon.com/blogs/post/Tx1DSINBM8LUNHY/New-Alexa-Skills-Kit-ASK-Feature-Audio-Streaming-in-Alexa-Skills
+
+https://servicelab.org/2013/07/24/streaming-audio-between-browsers-with-webrtc-and-webaudio/
