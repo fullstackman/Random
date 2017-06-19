@@ -1,0 +1,11 @@
+My favorite color is #BADA55
+
+But there are other cool colors like #C0FFEE and #7A5555
+
+Imagine if we had a list of all such colors!
+
+Write some quick JavaScript and host it on a page for people to see.
+
+Also let them type in a word to see if it color-izes.
+
+cheekycolors.com?
