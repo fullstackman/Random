@@ -20,3 +20,6 @@ https://github.com/cpostier/Info-Wars-Stream-Alexa
 
 Interesting Implementation with audio dev tools:
 https://github.com/bespoken/streamer 
+
+You may have starred an excellent YouTube API python implementation!
+https://github.com/jspear29/electro/blob/develop/source/utils/yt.js 
