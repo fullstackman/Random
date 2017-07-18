@@ -1,0 +1,9 @@
+Oscar Web Form
+https://www.hioscar.com/
+
+Go through the sign up process and make note of all the possible options and results on each form page.
+It's pleasant, clean and efficient.
+They built this with a python library (WTForms) and a frontend framework (backbone.js)
+
+Your mission, should you choose to accept it, is to reimplement this form in pure JS.
+Easy enough, right?
