@@ -1,0 +1,4 @@
+Take your list of jobs and turn them into a public git repo.
+Share with COGS and USACS
+Figure out a good format.
+Tags? Published site?
