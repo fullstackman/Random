@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Clock</title>
+</head>
+<body>
+  <div class="clock">
+    <div class="clock-face">
+      <div class="hand hour-hand">
+        <div id="inner-hour-hand"></div>
+      </div>
+      <div class="hand min-hand"></div>
+      <div class="hand second-hand"></div>
+    </div>
+  </div>
+  <style>
+    html {
+      background:#018DED;
+      font-size: 10px;
+      text-align: center;
+    }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-size: 2rem;
+      display: flex;
+      flex: 1;
+      align-items: center;
+    }
+    .clock {
+      background: white;
+      width: 30rem;
+      height: 30rem;
+      border: 20px solid black;
+      border-radius: 50%;
+      margin: 50px auto;
+      position: relative;
+      padding: 2rem;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      /* Accounts for the height of the clock hands */
+      transform: translateY(-3px);
+    }
+    .hand {
+      width: 50%;
+      height: 6px;
+      position: absolute;
+      top: 50%;
+      /*Changes the origin-point that the rotation is performed upon.*/
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.1s;
+      /*Makes the animation go back and forth fast enough to resemble a tick*/
+      transition-timing-function: cubic-bezier(0.1,2.7,0.58,1);
+    }
+    .second-hand{
+      background: red;
+      height: 3px;
+    }
+    .min-hand{
+      background: black;
+    }
+    .hour-hand{
+      background: transparent;
+    }
+    #inner-hour-hand{
+      background: black;
+      width: 55%;
+      margin-left: 45%;
+      height: 6px;
+      position: absolute;
+    }
+  </style>
+  <script>
+    /*Save references to the clock hands on the DOM*/
+    const secondHand = document.querySelector(".second-hand");
+    const minuteHand = document.querySelector(".min-hand");
+    const hourHand = document.querySelector(".hour-hand");
+
+    /*We need an offset of 90 degrees (clockwise) so that the top of the clock face is treated as the beginning of the clock*/
+    const offset = 90;
+
+    /*Save constants that wil translate a given time into degrees:
+      The clock face measures 360 degrees
+      A second is 1/60 of that amount
+      A minute is also 1/60 of that amount
+      An hour is 1/12 of that amount*/
+    const secondsConstant = 1 / 60 * 360;
+    const minutesConstant = 1 / 60 * 360;
+    const hoursConstant = 1 / 12 * 360;
+
+    /*Get the current time and parse it*/
+    const now = new Date();
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes();
+    const hours = now.getHours();
+
+    /*Translate the current time values into their corresponding positions on the clock face. Notice that we declare them using the "let" keyword because we will want to increment their values later!*/
+    let secondsDegrees = offset + (seconds * secondsConstant);
+    let minutesDegrees = offset + (minutes * minutesConstant);
+    let hoursDegrees = offset + (hours * hoursConstant);
+    
+    /*Apply the styling to the clock hands elements*/
+    secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+    minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
+    hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+    /*This function programmatically increments the clock's display after it has been initialized with the current time. It's important that we stop asking for the current time because when we use that value to calculate the degrees, it will cause a weird animation when a hand transitions from the last second of one minute/hour to the first second of the next minute/hour*/
+    function doTheTick(){
+      secondsDegrees += (1*secondsConstant);
+      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+      /*When the seconds hand reaches the top of the clock, increment the minutes hand*/
+      if(secondsDegrees % (offset + 360) == 0){
+        minutesDegrees += (1*minutesConstant);
+        minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
+        /*Every 15 minutes (a quarter of an hour), increment the hours hand slightly*/
+        if(minutesDegrees % (offset + 90) == 0){
+          hoursDegrees += (0.25*hoursConstant);
+          hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+        }
+      }
+    }
+    /*Run the tick function once every second*/
+    setInterval(doTheTick, 1000);
+  </script>
+</body>
+</html>
