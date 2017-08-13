@@ -14,3 +14,18 @@ stylesheet.media = 'only x';
 stylesheet.onload = function() {stylesheet.media = 'all'}
 document.getElementsByTagName('head')[0].appendChild(stylesheet);
 ```
+
+### Use a "Font Stack" of native fonts for better performance and reliability
+```css
+body {  
+   font-family: -apple-system, 
+                BlinkMacSystemFont, 
+                "Segoe UI", 
+                Roboto, 
+                Oxygen-Sans, 
+                Ubuntu, 
+                Cantarell, 
+                "Helvetica Neue", 
+                sans-serif;
+}
+```
