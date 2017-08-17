@@ -15,7 +15,8 @@ stylesheet.onload = function() {stylesheet.media = 'all'}
 document.getElementsByTagName('head')[0].appendChild(stylesheet);
 ```
 
-### Use a "Font Stack" of native fonts for better performance and reliability
+### Use a "Font Stack" of platform native fonts
+Gives better performance and reliability
 ```css
 body {  
    font-family: -apple-system, 
@@ -29,3 +30,6 @@ body {
                 sans-serif;
 }
 ```
+
+### Use the :target pseudo class to show and hide elements
+Check out the example in `css_text_transition.html`

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pure CSS Text Transition</title>
+		<style>
+			/* My inspiration: http://csscience.com/css3-tabs/ */
+			.contentBox {
+			    margin: 0 auto;
+			    width: 90%;
+			}
+			.contentBox .column {
+			    float: left;
+			    margin: 0;
+			    width: 50%;
+			}
+			.target-hack{
+				display: block;
+    			top: 0;
+    			left: 0;
+    			position: fixed;
+			}
+			.fullDescription{
+				display: none;
+			}
+			/*Show these by default*/
+			.showMoreArea span:target ~ .fullDescription,
+			.showMoreArea span:target ~ a:nth-of-type(2){
+				display: block;
+			}
+			/*Hide these by default*/
+			.showMoreArea span ~ a:nth-of-type(2),
+			.showMoreArea span:target ~ a:nth-of-type(1){
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Demo of a Pure CSS Text Transition Effect</h1>
+		<p>This is some intro text! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur dui sit amet ante tempus tempus. Nam pretium turpis eu elit porttitor lobortis. Donec iaculis rutrum blandit. Proin a lacus facilisis, luctus nisl eu, varius elit. Morbi dapibus feugiat massa sit amet maximus. Nam interdum scelerisque elementum. Nullam nisi lacus, pellentesque at pharetra eu, ultrices ut nisl. Etiam cursus dui at tellus rutrum, ac mollis neque rhoncus. Vivamus convallis neque vel fringilla scelerisque. Quisque eleifend eros tristique, interdum quam id, tincidunt erat. Fusce malesuada elit purus, non pellentesque odio posuere ac.</p>
+		<p>Below this is a large image to prove that when you click on the link for a larger description, the page won't scroll down.</p>
+		<div id="row" class="contentBox">
+			<div class="showMoreArea column">
+				<p>This a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur dui sit amet ante tempus tempus. Nam pretium turpis eu elit porttitor lobortis.</p>
+				<span class="target-hack" id="fullDescription01"></span>
+				<a href="#fullDescription01">Show more...</a>
+				<a href="#!">Show less...</a>
+				<p class="fullDescription">This is the rest of the description. Donec iaculis rutrum blandit. Proin a lacus facilisis, luctus nisl eu, varius elit. Morbi dapibus feugiat massa sit amet maximus. Nam interdum scelerisque elementum. Nullam nisi lacus, pellentesque at pharetra eu, ultrices ut nisl. Etiam cursus dui at tellus rutrum, ac mollis neque rhoncus. Vivamus convallis neque vel fringilla scelerisque. Quisque eleifend eros tristique, interdum quam id, tincidunt erat. Fusce malesuada elit purus, non pellentesque odio posuere ac.</p>
+			</div>
+			<div class="showMoreArea column">
+				<p>Here is another one! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur dui sit amet ante tempus tempus. Nam pretium turpis eu elit porttitor lobortis.</p>
+				<span class="target-hack" id="fullDescription02"></span>
+				<a href="#fullDescription02">Show more...</a>
+				<a href="#!">Show less...</a>
+				<p class="fullDescription">This is the rest of the description. Donec iaculis rutrum blandit. Proin a lacus facilisis, luctus nisl eu, varius elit. Morbi dapibus feugiat massa sit amet maximus. Nam interdum scelerisque elementum. Nullam nisi lacus, pellentesque at pharetra eu, ultrices ut nisl. Etiam cursus dui at tellus rutrum, ac mollis neque rhoncus. Vivamus convallis neque vel fringilla scelerisque. Quisque eleifend eros tristique, interdum quam id, tincidunt erat. Fusce malesuada elit purus, non pellentesque odio posuere ac.</p>
+			</div>
+		</div>
+		<img src="http://placehold.it/1067x600" style="margin-top: 5%;">
+		<p>The end!</p>
+	</body>
+</html>
