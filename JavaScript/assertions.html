@@ -1,0 +1,53 @@
+<!DOCTYPE HTML> 
+<html lang="en-US"> 
+	<head> 
+		<meta charset="UTF-8"> 
+		<title>Quick JavaScript Testing</title> 
+		<style> 
+			.pass:before { 
+				content: 'PASS: '; 
+				color: blue; 
+				font-weight: bold; 
+			} 
+			.fail:before { 
+				content: 'FAIL: '; 
+				color: red;
+				font-weight: bold; 
+			} 
+		</style>
+		</head>
+	<body>   
+		<h2>Automated Javascript Tests</h2>
+		<ul id="assertion_output"></ul> 
+		  
+		<script> 
+			/*The assertion code*/
+			const outputArea = document.getElementById('assertion_output');
+			let testsCounter = 0;
+			  
+			function assert( outcome, description ) {
+				testsCounter++;
+				/*HTML version*/
+				let li = document.createElement('li'); 
+				li.className = outcome ? 'pass' : 'fail'; 
+				li.appendChild( document.createTextNode(`Test #${testsCounter} - ${description}`) ); 
+				outputArea.appendChild(li);
+
+				/*console version*/
+				console.log(`Test #${testsCounter} - ${outcome ? "PASS!" : "FAIL!"}:\n\t${description}`);
+			};
+
+			let count = 0;
+
+			/*Some tests*/
+			function delayedReport(givenValue){
+				setTimeout(function(){
+					assert(++count === givenValue, `The current value is ${givenValue}`);
+				}, givenValue*300);
+			}
+
+			const quickArray = [1,2,3,4,5];
+			quickArray.forEach(delayedReport);
+		</script>
+	</body>
+</html>
